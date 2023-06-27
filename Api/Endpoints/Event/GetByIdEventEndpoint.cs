@@ -2,7 +2,7 @@ using Application.Messages.Event.Request;
 
 namespace GazMeme.Endpoints.Event;
 
-[HttpGet("event/direction/{Id}")]
+[HttpGet("event/{Id}")]
 public class GetByIdEventEndpoint : EndpointWithoutRequest<GetByIdEventRequest>
 {
     
