@@ -2,6 +2,7 @@ global using FastEndpoints;
 using Application;
 using FastEndpoints.Swagger;
 using Infrastructure;
+using NSwag;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -17,7 +18,16 @@ services.AddCors(p => p.AddPolicy("CORSApp", corsPolicyBuilder =>
 
 services.AddSingleton(builder.Environment);
 services.AddFastEndpoints();
-services.SwaggerDocument();
+services.SwaggerDocument(x => x.DocumentSettings = options =>
+{
+    options.PostProcess = document =>
+    {
+        document.Servers.Add(new OpenApiServer()
+        {
+            Url = "https://clothing-store-ek.ru/"
+        });
+    };
+});
 
 
 var app = builder.Build();
