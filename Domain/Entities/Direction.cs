@@ -8,10 +8,8 @@ public class Direction : EntityBase
 
     public Employee Employee { get; set; }
 
-    public string ImageUrl { get; set; } = null!;
+    public string PreviewUrl { get; set; } = null!;
 
-    public string VideoUrl { get; set; } = null!;
-    
     public List<string> ImageUrls { get; set; } = new();
 
     public List<Event> Events { get; set; } = new();

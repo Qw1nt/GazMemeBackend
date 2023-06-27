@@ -9,6 +9,8 @@ public class Event : EntityBase
     public DateTime DateTime { get; set; }
     
     public Direction Direction { get; set; }
+    
+    public string VideoUrl { get; set; } = null!;
 
     public List<string> ImageUrls { get; set; } = new();
 

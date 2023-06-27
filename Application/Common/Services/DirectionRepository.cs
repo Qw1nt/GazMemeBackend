@@ -47,8 +47,7 @@ public class DirectionRepository : IDirectionRepository
             Title = model.Title,
             Description = model.Description,
             Employee = employee,
-            ImageUrl = await _fileSaveService.SaveAsync(httpContext, model.Image, Constants.Paths.Directions),
-            VideoUrl = await _fileSaveService.SaveAsync(httpContext, model.Video, Constants.Paths.Directions),
+            PreviewUrl = await _fileSaveService.SaveAsync(httpContext, model.Preview, Constants.Paths.Directions),
             ImageUrls = model.Images.Select(async x => 
                 await _fileSaveService.SaveAsync(httpContext, x, Constants.Paths.Directions))
                 .Select(x => x.Result)
