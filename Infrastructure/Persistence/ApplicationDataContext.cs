@@ -26,4 +26,10 @@ public sealed class ApplicationDataContext : DbContext, IApplicationDataContext
     public DbSet<User> Users => Set<User>();
     
     public DbSet<Post> Posts => Set<Post>();
+
+    public DbSet<Employee> Employee => Set<Employee>();
+
+    public DbSet<Direction> Direction => Set<Direction>();
+    
+    public DbSet<Event> Event => Set<Event>();
 }

@@ -16,7 +16,8 @@ public class DeletePostEndpoint : Endpoint<DeletePostCommand>
     public override async Task HandleAsync(DeletePostCommand req, CancellationToken ct)
     {
         var operationResult = await _postRepository.DeleteAsync(req.PostId, cancellationToken: ct);
-        if (operationResult == true)
+        
+        if (operationResult)
             await SendAsync(true, cancellation: ct);
         else
             await SendErrorsAsync(cancellation: ct);

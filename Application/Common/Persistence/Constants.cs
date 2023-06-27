@@ -9,5 +9,9 @@ public class Constants
     public class Paths
     {
         public const string Posts = "PostsPosters";
+
+        public const string Employees = "Employees";
+
+        public const string Directions = "Directions";
     }
 }

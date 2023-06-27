@@ -1,11 +1,10 @@
 ﻿using Application.Common.Interfaces;
 using Application.Messages.Posts.Commands;
 using Domain.Entities;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GazMeme.Endpoints.Posts;
 
-public class CreatePostEndpoint : Endpoint<Application.Messages.Posts.Commands.CreatePostCommand, Post>
+public class CreatePostEndpoint : Endpoint<CreatePostCommand, Post>
 {
     private readonly IPostRepository _postRepository;
 
