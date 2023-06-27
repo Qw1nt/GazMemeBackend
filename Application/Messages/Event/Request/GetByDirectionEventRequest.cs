@@ -1,3 +1,3 @@
 namespace Application.Messages.Event.Request;
 
-public record GetByDirectionEventRequest();
+public record GetByDirectionEventRequest(int DirectionId);
