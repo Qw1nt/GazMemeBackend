@@ -14,21 +14,18 @@ services.AddFastEndpoints();
 services.AddApplicationServices(configuration);
 services.AddInfrastructureServices(configuration);
 services.SwaggerDocument();
-services.AddCors();
+services.AddCors(p => p.AddPolicy("CORSApp", corsPolicyBuilder =>
+{
+    corsPolicyBuilder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
-app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
-app.UseCors(x =>
-{
-    x.AllowAnyOrigin();
-    x.AllowAnyMethod();
-    x.AllowAnyHeader();
-});
-
+app.UseCors("CORSApp");
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints();
