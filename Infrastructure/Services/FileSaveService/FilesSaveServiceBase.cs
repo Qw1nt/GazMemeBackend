@@ -4,6 +4,8 @@ namespace Infrastructure.Services.FileSaveService;
 
 public abstract class FilesSaveServiceBase
 {
+    protected const string BaseUrl = "https://clothing-store-ek.ru/";
+    
     public FilesSaveServiceBase(IWebHostEnvironment environment)
     {
         WebRootDirectoryPath = environment.WebRootPath;

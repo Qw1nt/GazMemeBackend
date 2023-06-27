@@ -18,17 +18,7 @@ services.AddCors(p => p.AddPolicy("CORSApp", corsPolicyBuilder =>
 
 services.AddSingleton(builder.Environment);
 services.AddFastEndpoints();
-services.SwaggerDocument(/*x => x.DocumentSettings = options =>
-{
-    options.PostProcess = document =>
-    {
-        document.Servers.Clear();
-        document.Servers.Add(new OpenApiServer()
-        {
-            Url = "https://clothing-store-ek.ru/"
-        });
-    };
-}*/);
+services.SwaggerDocument();
 
 
 var app = builder.Build();

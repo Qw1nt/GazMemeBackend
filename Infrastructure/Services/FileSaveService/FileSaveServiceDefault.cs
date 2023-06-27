@@ -1,5 +1,4 @@
 ﻿using Application.Common.Interfaces;
-using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
@@ -28,6 +27,6 @@ public class FileSaveServiceDefault : FilesSaveServiceBase, IFileSaveService
         await using Stream stream = new FileStream(savePath, FileMode.Create);
         await formFile.CopyToAsync(stream);
 
-        return Path.Combine(httpContext.Request.BaseUrl()!, saveFolder, fileName);
+        return Path.Combine(BaseUrl, saveFolder, fileName);
     }
 }
