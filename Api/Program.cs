@@ -18,7 +18,7 @@ services.AddCors(p => p.AddPolicy("CORSApp", corsPolicyBuilder =>
 
 services.AddSingleton(builder.Environment);
 services.AddFastEndpoints();
-services.SwaggerDocument(x => x.DocumentSettings = options =>
+services.SwaggerDocument(/*x => x.DocumentSettings = options =>
 {
     options.PostProcess = document =>
     {
@@ -28,7 +28,7 @@ services.SwaggerDocument(x => x.DocumentSettings = options =>
             Url = "https://clothing-store-ek.ru/"
         });
     };
-});
+}*/);
 
 
 var app = builder.Build();
@@ -39,13 +39,13 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints();
-app.UseSwaggerGen(/*x => x.PostProcess = (document, request) =>
+app.UseSwaggerGen(x => x.PostProcess = (document, request) =>
 {
     document.Servers.Clear();
     document.Servers.Add(new OpenApiServer()
     {
         Url = "https://clothing-store-ek.ru/"
     });
-}*/);
+});
 
 app.Run();
