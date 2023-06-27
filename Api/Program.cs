@@ -28,6 +28,7 @@ app.UseCors(x =>
     x.AllowAnyMethod();
     x.AllowAnyHeader();
 });
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints();

@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GazMeme.Endpoints.Posts;
 
-public class CreatePost : Endpoint<CreatePostCommand, Post>
+public class CreatePostEndpoint : Endpoint<Application.Messages.Posts.Commands.CreatePostCommand, Post>
 {
     private readonly IPostRepository _postRepository;
 
-    public CreatePost(IPostRepository postRepository)
+    public CreatePostEndpoint(IPostRepository postRepository)
     {
         _postRepository = postRepository;
     }
@@ -20,7 +20,7 @@ public class CreatePost : Endpoint<CreatePostCommand, Post>
         Post("api/posts/create");
     }
 
-    public override async Task HandleAsync(CreatePostCommand req, CancellationToken ct)
+    public override async Task HandleAsync(Application.Messages.Posts.Commands.CreatePostCommand req, CancellationToken ct)
     {
         var createdPost = await _postRepository.AddAsync(HttpContext, req, ct);
 
