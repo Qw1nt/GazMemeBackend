@@ -21,6 +21,8 @@ public static class ConfigureServices
         services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
 
         services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IDirectionRepository, DirectionRepository>();
         
         return services;
     }
