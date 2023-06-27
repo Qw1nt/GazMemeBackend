@@ -9,4 +9,9 @@ public class CreateEventEndpoint : Endpoint<CreateEventCommand, Domain.Entities.
         AllowFormData();
         Post("event/create");
     }
+
+    public override Task HandleAsync(CreateEventCommand req, CancellationToken ct)
+    {
+        return base.HandleAsync(req, ct);
+    }
 }
