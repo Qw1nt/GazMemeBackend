@@ -3,4 +3,4 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Messages.Event.Commands;
 
-public record CreateEventCommand([FromForm] IFormFile Video);
+public record CreateEventCommand(string Title, string Description, DateTime DateTime, int DirectionId,  [FromForm] IFormFile Video,  IFormFileCollection Images, List<int> EmployeeIds);

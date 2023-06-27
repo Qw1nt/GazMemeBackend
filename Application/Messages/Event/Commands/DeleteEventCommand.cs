@@ -1,3 +1,3 @@
 namespace Application.Messages.Event.Commands;
 
-public record DeleteEventCommand();
+public record DeleteEventCommand(int EventId);

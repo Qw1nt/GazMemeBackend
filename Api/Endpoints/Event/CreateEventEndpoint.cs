@@ -7,6 +7,7 @@ public class CreateEventEndpoint : Endpoint<CreateEventCommand, Domain.Entities.
     public override void Configure()
     {
         AllowFormData();
+        AllowFileUploads();
         Post("event/create");
     }
 

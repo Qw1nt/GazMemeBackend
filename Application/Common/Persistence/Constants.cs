@@ -13,5 +13,7 @@ public class Constants
         public const string Employees = "Employees";
 
         public const string Directions = "Directions";
+
+        public const string Events = "Events";
     }
 }

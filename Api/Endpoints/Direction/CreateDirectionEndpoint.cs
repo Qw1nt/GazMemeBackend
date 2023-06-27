@@ -15,6 +15,7 @@ public class CreateDirectionEndpoint : Endpoint<CreateDirectionCommand, Domain.E
     public override void Configure()
     {
         AllowFormData();
+        AllowFileUploads();
         Post("direction/create");
     }
     
