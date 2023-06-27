@@ -11,6 +11,8 @@ public class Direction : EntityBase
     public string ImageUrl { get; set; } = null!;
 
     public string VideoUrl { get; set; } = null!;
+    
+    public List<string> ImageUrls { get; set; } = new();
 
-    public List<string> ImageUrls { get; set; } = null!;
+    public List<Event> Events { get; set; } = new();
 }
