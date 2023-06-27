@@ -1,6 +1,9 @@
+using Application.Messages.Event.Request;
+
 namespace GazMeme.Endpoints.Event;
 
-public class GetByDirectionEventEndpoint
+[HttpGet("event/direction/{DirectionId}")]
+public class GetByDirectionEventEndpoint : EndpointWithoutRequest<GetByDirectionEventRequest>
 {
     
 }
