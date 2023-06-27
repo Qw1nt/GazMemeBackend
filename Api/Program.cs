@@ -38,6 +38,12 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints();
-app.UseSwaggerGen();
+app.UseSwaggerGen(x => x.PostProcess = (document, request) =>
+{
+    document.Servers.Add(new OpenApiServer()
+    {
+        Url = "https://clothing-store-ek.ru/"
+    });
+});
 
 app.Run();
