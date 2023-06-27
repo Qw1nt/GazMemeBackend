@@ -5,10 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
 
-public class ApplicationDataContext : DbContext, IApplicationDataContext
+public sealed class ApplicationDataContext : DbContext, IApplicationDataContext
 {
     public ApplicationDataContext(DbContextOptions<ApplicationDataContext> options) : base(options)
-    { }
+    {
+        Database.EnsureCreated();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

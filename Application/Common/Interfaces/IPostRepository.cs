@@ -5,5 +5,4 @@ namespace Application.Common.Interfaces;
 
 public interface IPostRepository : IRepository<Post, CreatePostCommand>
 {
-    
 }

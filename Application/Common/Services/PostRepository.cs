@@ -2,6 +2,7 @@
 using Application.Common.Persistence;
 using Application.Messages.Posts.Commands;
 using Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Common.Services;
@@ -31,13 +32,13 @@ public class PostRepository : IPostRepository
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
     }
 
-    public async Task<Post?> AddAsync(CreatePostCommand model, CancellationToken cancellationToken = default)
+    public async Task<Post?> AddAsync(HttpContext httpContext, CreatePostCommand model, CancellationToken cancellationToken = default)
     {
         var post = new Post()
         {
             Title = model.Title,
             Content = model.Content,
-            ImageUrl = await _fileSaveService.SaveAsync(model.Image, Constants.Paths.Posts)
+            ImageUrl = await _fileSaveService.SaveAsync(httpContext, model.Image, Constants.Paths.Posts)
         };
 
         var entry = await _applicationDataContext.Posts.AddAsync(post, cancellationToken);

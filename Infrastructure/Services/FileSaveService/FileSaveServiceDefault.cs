@@ -1,11 +1,18 @@
 ﻿using Application.Common.Interfaces;
+using Infrastructure.Extensions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Services.FileSaveService;
 
 public class FileSaveServiceDefault : FilesSaveServiceBase, IFileSaveService
 {
-    public async Task<string> SaveAsync(IFormFile formFile, string saveFolder)
+    public FileSaveServiceDefault(IWebHostEnvironment environment) : base(environment)
+    {
+        
+    }
+    
+    public async Task<string> SaveAsync(HttpContext httpContext, IFormFile formFile, string saveFolder)
     {
         if(formFile is null)
             throw new NullReferenceException("Нет целевого файла на сохранение");
@@ -21,6 +28,6 @@ public class FileSaveServiceDefault : FilesSaveServiceBase, IFileSaveService
         await using Stream stream = new FileStream(savePath, FileMode.Create);
         await formFile.CopyToAsync(stream);
 
-        return Path.Combine(saveFolder, fileName);
+        return Path.Combine(httpContext.Request.BaseUrl()!, saveFolder, fileName);
     }
 }

@@ -4,5 +4,5 @@ namespace Application.Common.Interfaces;
 
 public interface IFileSaveService
 {
-    Task<string> SaveAsync(IFormFile formFile, string saveFolder);
+    Task<string> SaveAsync(HttpContext httpContext, IFormFile formFile, string saveFolder);
 }

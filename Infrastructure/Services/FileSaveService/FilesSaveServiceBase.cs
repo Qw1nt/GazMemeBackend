@@ -1,7 +1,14 @@
-﻿namespace Infrastructure.Services.FileSaveService;
+﻿using Microsoft.AspNetCore.Hosting;
+
+namespace Infrastructure.Services.FileSaveService;
 
 public abstract class FilesSaveServiceBase
 {
+    public FilesSaveServiceBase(IWebHostEnvironment environment)
+    {
+        WebRootDirectoryPath = environment.WebRootPath;
+    }
+    
     public string WebRootDirectoryPath { get; init; } = null!;
 
     protected string GetSaveDirectoryPath(string saveFolder)

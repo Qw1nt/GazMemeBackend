@@ -22,7 +22,7 @@ public class CreatePost : Endpoint<CreatePostCommand, Post>
 
     public override async Task HandleAsync(CreatePostCommand req, CancellationToken ct)
     {
-        var createdPost = await _postRepository.AddAsync(req, ct);
+        var createdPost = await _postRepository.AddAsync(HttpContext, req, ct);
 
         if (createdPost is null)
             await SendErrorsAsync(cancellation: ct);
