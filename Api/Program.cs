@@ -20,8 +20,6 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 
-app.UseHttpsRedirection();
-
 app.UseCors(x =>
 {
     x.AllowAnyOrigin();
