@@ -17,7 +17,7 @@ public class CreatePostEndpoint : Endpoint<Application.Messages.Posts.Commands.C
     public override void Configure()
     {
         AllowFormData();
-        Post("api/posts/create");
+        Post("posts/create");
     }
 
     public override async Task HandleAsync(Application.Messages.Posts.Commands.CreatePostCommand req, CancellationToken ct)

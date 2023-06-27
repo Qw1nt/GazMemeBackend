@@ -3,7 +3,7 @@ using Application.Messages.Posts.Commands;
 
 namespace GazMeme.Endpoints.Posts;
 
-[HttpDelete("api/posts/{PostId}")]
+[HttpDelete("posts/{PostId}")]
 public class DeletePostEndpoint : Endpoint<DeletePostCommand>
 {
     private readonly IPostRepository _postRepository;

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace GazMeme.Endpoints.Identity;
 
 [AllowAnonymous]
-[HttpPost("api/identity/register")]
+[HttpPost("identity/register")]
 public class RegistrationEndpoint : Endpoint<IdentityCommand, User>
 {
     private readonly IUserAuthenticationService _userAuthenticationService;

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GazMeme.Endpoints.Identity;
 
 [AllowAnonymous]
-[HttpPost("api/identity/authentication")]
+[HttpPost("identity/authentication")]
 public class AuthenticationEndpoint : Endpoint<IdentityCommand, TokenPair>
 {
     private readonly IUserAuthenticationService _userAuthenticationService;
