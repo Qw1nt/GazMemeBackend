@@ -22,6 +22,7 @@ services.SwaggerDocument(x => x.DocumentSettings = options =>
 {
     options.PostProcess = document =>
     {
+        document.Servers.Clear();
         document.Servers.Add(new OpenApiServer()
         {
             Url = "https://clothing-store-ek.ru/"
@@ -38,12 +39,13 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseFastEndpoints();
-app.UseSwaggerGen(x => x.PostProcess = (document, request) =>
+app.UseSwaggerGen(/*x => x.PostProcess = (document, request) =>
 {
+    document.Servers.Clear();
     document.Servers.Add(new OpenApiServer()
     {
         Url = "https://clothing-store-ek.ru/"
     });
-});
+}*/);
 
 app.Run();
