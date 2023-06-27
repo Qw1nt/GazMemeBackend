@@ -8,8 +8,6 @@ public class Employee : EntityBase
 
     public string Surname { get; set; } = null!;
 
-    public Direction Direction { get; set; } = null!;
-    
     public string PreviewUrl { get; set; } = null!;
 
     public string Phone { get; set; } = null!;
