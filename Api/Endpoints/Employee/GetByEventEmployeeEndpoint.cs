@@ -4,7 +4,7 @@ using Application.Messages.Direction.Request;
 
 namespace GazMeme.Endpoints.Employee;
 
-[HttpDelete("employee/event/{DeleteId}")]
+[HttpGet("employee/event/{DeleteId}")]
 public class GetByEventEmployeeEndpoint : Endpoint<GetByEventDirectionCommand>
 {
     private readonly IEmployeeRepository _employeeRepository;
