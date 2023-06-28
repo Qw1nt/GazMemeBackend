@@ -23,6 +23,7 @@ public static class ConfigureServices
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IDirectionRepository, DirectionRepository>();
+        services.AddScoped<IEventRepository, EventRepository>();
         
         return services;
     }
