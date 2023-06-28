@@ -1,10 +1,11 @@
 using Application.Common.Interfaces;
 using Application.Messages.Direction.Commands;
+using Application.Messages.Employee.Commands;
 
 namespace GazMeme.Endpoints.Employee;
 
-[HttpDelete("employee/{DeleteId}")]
-public class DeleteEmployeeEndpoint : Endpoint<DeleteDirectionCommand>
+[HttpDelete("employee/{EmployeeId}")]
+public class DeleteEmployeeEndpoint : Endpoint<DeleteEmployeeCommand>
 {
     private readonly IEmployeeRepository _employeeRepository;
 
@@ -13,9 +14,9 @@ public class DeleteEmployeeEndpoint : Endpoint<DeleteDirectionCommand>
         _employeeRepository = employeeRepository;
     }
     
-    public override async Task HandleAsync(DeleteDirectionCommand req, CancellationToken ct)
+    public override async Task HandleAsync(DeleteEmployeeCommand req, CancellationToken ct)
     {
-        var operationResult = await _employeeRepository.DeleteAsync(req.DirectionId, cancellationToken: ct);
+        var operationResult = await _employeeRepository.DeleteAsync(req.EmployeeId, cancellationToken: ct);
         
         if (operationResult)
             await SendAsync(true, cancellation: ct);

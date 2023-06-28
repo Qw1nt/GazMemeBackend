@@ -3,7 +3,7 @@ using Application.Messages.Direction.Commands;
 
 namespace GazMeme.Endpoints.Direction;
 
-[HttpDelete("posts/{DeleteId}")]
+[HttpDelete("direction/{DirectionId}")]
 public class DeleteDirectionEndpoint : Endpoint<DeleteDirectionCommand>
 {
     private readonly IDirectionRepository _directionRepository;

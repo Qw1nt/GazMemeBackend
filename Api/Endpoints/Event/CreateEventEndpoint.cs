@@ -1,10 +1,12 @@
 using Application.Common.Interfaces;
 using Application.Messages.Event.Commands;
+using Contracts.Event;
 using GazMeme.Common.Binders;
+using GazMeme.Endpoints.Event.Mapper;
 
 namespace GazMeme.Endpoints.Event;
 
-public class CreateEventEndpoint : Endpoint<CreateEventCommand, Domain.Entities.Event>
+public class CreateEventEndpoint : Endpoint<CreateEventCommand, EventResponse, EventMapper>
 {
     private readonly IEventRepository _eventRepository;
     
@@ -31,6 +33,6 @@ public class CreateEventEndpoint : Endpoint<CreateEventCommand, Domain.Entities.
         if (createdEvent is null)
             await SendErrorsAsync(cancellation: ct);
         
-        await SendAsync(createdEvent!, cancellation: ct);
+        await SendAsync(Map.FromEntity(createdEvent!), cancellation: ct);
     }
 }

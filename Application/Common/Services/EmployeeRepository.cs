@@ -27,7 +27,10 @@ public class EmployeeRepository : IEmployeeRepository
     
     public async Task<List<Employee>> GetByEventAsync(int eventId, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await _applicationDataContext.Employee
+            .AsNoTracking()
+            .Where(x => x.Events.Any(x => x.Id == eventId))
+            .ToListAsync(cancellationToken: cancellationToken);
     }
 
     public async Task<Employee?> GetAsync(int id, CancellationToken cancellationToken = default)

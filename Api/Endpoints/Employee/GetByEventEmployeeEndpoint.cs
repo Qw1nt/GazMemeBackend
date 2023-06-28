@@ -1,12 +1,13 @@
 using Application.Common.Interfaces;
+using Application.Messages.Employee.Queries;
 using Application.Messages.Event.Request;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Employee;
 
-[HttpGet("employee/event/{DeleteId}")]
+[HttpGet("employee/event/{EventId}")]
 [AllowAnonymous]
-public class GetByEventEmployeeEndpoint : Endpoint<GetByDirectionEventRequest>
+public class GetByEventEmployeeEndpoint : Endpoint<GetByEventEmployeeQuery, List<Domain.Entities.Employee>>
 {
     private readonly IEmployeeRepository _employeeRepository;
 
@@ -15,9 +16,9 @@ public class GetByEventEmployeeEndpoint : Endpoint<GetByDirectionEventRequest>
         _employeeRepository = employeeRepository;
     }
     
-    public override async Task HandleAsync(GetByDirectionEventRequest req, CancellationToken ct)
+    public override async Task HandleAsync(GetByEventEmployeeQuery req, CancellationToken ct)
     {
-        var employees = await _employeeRepository.GetByEventAsync(req.DirectionId, cancellationToken: ct);
+        var employees = await _employeeRepository.GetByEventAsync(req.EventId, cancellationToken: ct);
         
         await SendAsync(employees, cancellation: ct);
     }

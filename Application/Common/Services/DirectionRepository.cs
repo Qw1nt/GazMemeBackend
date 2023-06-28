@@ -30,6 +30,7 @@ public class DirectionRepository : IDirectionRepository
     {
         return await _applicationDataContext.Direction
             .Include(direction => direction.Employee)
+            .Include(direction => direction.Events)
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
     }

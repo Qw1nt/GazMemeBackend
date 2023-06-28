@@ -21,6 +21,7 @@ public class EventRepository : IEventRepository
     public async Task<List<Event>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await _applicationDataContext.Event
+            .Include(x => x.Employees)
             .AsNoTracking()
             .ToListAsync(cancellationToken: cancellationToken);
     }
@@ -28,8 +29,18 @@ public class EventRepository : IEventRepository
     public async Task<Event?> GetAsync(int id, CancellationToken cancellationToken = default)
     {
         return await _applicationDataContext.Event
+            .Include(x => x.Employees)
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
+    }
+    
+    public async Task<List<Event>> GetEventByDirectionAsync(int directionId, CancellationToken cancellationToken = default)
+    {
+        return await _applicationDataContext.Event
+            .Include(x => x.Employees)
+            .AsNoTracking()
+            .Where(x => x.Direction.Id == directionId)
+            .ToListAsync(cancellationToken: cancellationToken);
     }
 
     public async Task<Event?> AddAsync(HttpContext httpContext, CreateEventCommand model, CancellationToken cancellationToken = default)
@@ -80,13 +91,5 @@ public class EventRepository : IEventRepository
         await _applicationDataContext.SaveChangesAsync(cancellationToken);
 
         return true;
-    }
-
-    public async Task<List<Event>> GetEventByDirectionAsync(int directionId, CancellationToken cancellationToken = default)
-    {
-        return await _applicationDataContext.Event
-            .AsNoTracking()
-            .Where(x => x.Direction.Id == directionId)
-            .ToListAsync(cancellationToken: cancellationToken);
     }
 }

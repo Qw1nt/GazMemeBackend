@@ -11,8 +11,8 @@ public class CreateEventBinder : RequestBinder<CreateEventCommand>
         return new CreateEventCommand(
             Title: form["title"].ToString(),
             Description: form["description"].ToString(),
-            DirectionId: Convert.ToInt32(form["employeeId"]),
-            DateTime: DateTime.Parse(form["dateTime"].ToString()),
+            DirectionId: Convert.ToInt32(form["directionId"]),
+            DateTime: DateTime.Parse(form["dateTime"].ToString()).ToUniversalTime(),
             Video: form.Files[0],
             Images: form.Files.Skip(1).ToList(),
             EmployeeIds: form["employeeIds"].ToString().Split(',').Select(strId => Convert.ToInt32(strId)).ToList()
