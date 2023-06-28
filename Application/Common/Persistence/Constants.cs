@@ -15,5 +15,7 @@ public class Constants
         public const string Directions = "Directions";
 
         public const string Events = "Events";
+
+        public const string Common = "Common";
     }
 }

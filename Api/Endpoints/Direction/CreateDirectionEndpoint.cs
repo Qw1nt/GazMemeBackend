@@ -21,6 +21,8 @@ public class CreateDirectionEndpoint : Endpoint<CreateDirectionCommand, Domain.E
     
     public override async Task HandleAsync(CreateDirectionCommand req, CancellationToken ct)
     {
+        var test = Files.Count;
+        
         var createdDirection = await _directionRepository.AddAsync(HttpContext, req, ct);
 
         if (createdDirection is null)

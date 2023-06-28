@@ -65,11 +65,23 @@ public class EventRepository : IEventRepository
 
     public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var eventIn = await _applicationDataContext.Event
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
+
+        if (eventIn is null)
+            return false;
+            
+        _applicationDataContext.Event.Remove(eventIn);
+        await _applicationDataContext.SaveChangesAsync(cancellationToken);
+
+        return true;
     }
 
-    public async Task<List<Event>> GetEventByDirectionAsync(CancellationToken cancellationToken = default)
+    public async Task<List<Event>> GetEventByDirectionAsync(int directionId, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await _applicationDataContext.Event
+            .AsNoTracking()
+            .Where(x => x.Direction.Id == directionId)
+            .ToListAsync(cancellationToken: cancellationToken);
     }
 }
