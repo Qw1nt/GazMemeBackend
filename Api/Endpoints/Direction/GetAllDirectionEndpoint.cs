@@ -1,8 +1,10 @@
 using Application.Common.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Direction;
 
 [HttpGet("direction/all")]
+[AllowAnonymous]
 public class GetAllDirectionEndpoint : EndpointWithoutRequest<List<Domain.Entities.Direction>>
 {
     private readonly IDirectionRepository _directionRepository;

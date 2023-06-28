@@ -37,6 +37,9 @@ public class EventRepository : IEventRepository
         var direction = await _applicationDataContext.Direction
             .FirstOrDefaultAsync(x => x.Id == model.DirectionId, cancellationToken: cancellationToken);
         
+        var employees = await _applicationDataContext.Employee
+            .Where(x => model.EmployeeIds.Contains(x.Id)).ToListAsync(cancellationToken: cancellationToken);
+        
         if (direction is null)
             return null;
         
@@ -45,6 +48,8 @@ public class EventRepository : IEventRepository
             Title = model.Title,
             Description = model.Description,
             Direction = direction,
+            DateTime = model.DateTime,
+            Employees = employees,
             VideoUrl = await _fileSaveService.SaveAsync(httpContext, model.Video, Constants.Paths.Events),
             ImageUrls = model.Images.Select(async x => 
                     await _fileSaveService.SaveAsync(httpContext, x, Constants.Paths.Directions))

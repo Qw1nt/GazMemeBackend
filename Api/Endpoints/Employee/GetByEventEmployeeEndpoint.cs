@@ -1,9 +1,11 @@
 using Application.Common.Interfaces;
 using Application.Messages.Event.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Employee;
 
 [HttpGet("employee/event/{DeleteId}")]
+[AllowAnonymous]
 public class GetByEventEmployeeEndpoint : Endpoint<GetByDirectionEventRequest>
 {
     private readonly IEmployeeRepository _employeeRepository;
