@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GazMeme.Endpoints.Posts;
 
-[AllowAnonymous]
 [HttpGet("posts/all")]
+[AllowAnonymous]
 public class GetAllPostEndpoint : EndpointWithoutRequest<List<Post>>
 {
     private readonly IApplicationDataContext _applicationDataContext;

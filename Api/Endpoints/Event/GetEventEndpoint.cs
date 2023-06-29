@@ -2,10 +2,12 @@ using Application.Common.Interfaces;
 using Application.Messages.Event.Request;
 using Contracts.Event;
 using GazMeme.Endpoints.Event.Mapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Event;
 
 [HttpGet("event/{Id}")]
+[AllowAnonymous]
 public class GetEventEndpoint : Endpoint<GetByIdEventRequest, EventResponse, EventMapper>
 {
     private readonly IEventRepository _eventRepository;

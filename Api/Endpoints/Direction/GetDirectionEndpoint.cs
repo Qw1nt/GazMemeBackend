@@ -3,10 +3,12 @@ using Application.Messages.Direction.Queries;
 using Application.Messages.Event.Request;
 using Contracts.Direction;
 using GazMeme.Endpoints.Direction.Mapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Direction;
 
 [HttpGet("direction/{Id}")]
+[AllowAnonymous]
 public class GetDirectionEndpoint : Endpoint<GetByIdDirectionQuery, DirectionResponse, DirectionMapper>
 {
     private readonly IDirectionRepository _directionRepository;
