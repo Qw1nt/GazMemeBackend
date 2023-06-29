@@ -13,7 +13,6 @@ COPY ["Domain/Domain.csproj", "Domain/"]
 RUN dotnet restore "Api/Api.csproj"
 COPY . .
 WORKDIR "/src/Api"
-RUN dotnet ef migration add migration_0
 RUN dotnet build "Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
