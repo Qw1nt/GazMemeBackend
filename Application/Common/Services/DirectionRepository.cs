@@ -46,6 +46,8 @@ public class DirectionRepository : IDirectionRepository
         var direction = new Direction()
         {
             Title = model.Title,
+            Subtitle = model.Subtitle,
+            ShortDescription = model.ShortDescription,
             Description = model.Description,
             Employee = employee,
             PreviewUrl = await _fileSaveService.SaveAsync(httpContext, model.Preview, Constants.Paths.Directions),
