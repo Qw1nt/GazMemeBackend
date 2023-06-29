@@ -47,6 +47,7 @@ app.Run();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ApplicationDataContext>();
+    
     if (context.Database.GetPendingMigrations().Any())
     {
         context.Database.Migrate();
