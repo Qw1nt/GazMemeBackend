@@ -16,5 +16,5 @@ public class Employee : EntityBase
 
     public List<Event> Events { get; set; } = new();
 
-    public string FullName => $"{FirstName} {LastName} {Surname}";
+    public string FullName => $"{LastName} {FirstName} {Surname}";
 }
