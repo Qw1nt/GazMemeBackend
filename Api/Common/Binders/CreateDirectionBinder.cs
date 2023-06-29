@@ -10,6 +10,8 @@ public class CreateDirectionBinder : RequestBinder<CreateDirectionCommand>
         
         return new CreateDirectionCommand(
             Title: form["title"].ToString(),
+            Subtitle: form["subtitle"].ToString(),
+            ShortDescription: form["shortDescription"].ToString(),
             Description: form["description"].ToString(),
             EmployeeId: Convert.ToInt32(form["employeeId"]),
             Preview: form.Files[0],
