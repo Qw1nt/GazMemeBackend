@@ -1,6 +1,5 @@
 global using FastEndpoints;
 using Application;
-using Application.Common.Interfaces;
 using FastEndpoints.Swagger;
 using GazMeme;
 using Infrastructure;
