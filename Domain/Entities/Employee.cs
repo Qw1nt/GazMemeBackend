@@ -8,7 +8,7 @@ public class Employee : EntityBase
 
     public string Surname { get; set; } = null!;
 
-    public string PreviewUrl { get; set; } = null!;
+    public string PhotoUrl { get; set; } = null!;
 
     public string Phone { get; set; } = null!;
     

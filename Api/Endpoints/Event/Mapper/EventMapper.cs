@@ -19,7 +19,7 @@ public class EventMapper : ResponseMapper<EventResponse, Domain.Entities.Event>
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Surname = x.Surname,
-                PreviewUrl = x.PreviewUrl,
+                PhotoUrl = x.PhotoUrl,
                 Phone = x.Phone,
                 Email = x.Email
             }).ToList(),

@@ -49,7 +49,7 @@ public class EmployeeRepository : IEmployeeRepository
             Surname = model.Surname,
             Phone = model.Phone,
             Email = model.Email,
-            PreviewUrl = await _fileSaveService.SaveAsync(httpContext, model.Image, Constants.Paths.Employees)
+            PhotoUrl = await _fileSaveService.SaveAsync(httpContext, model.Photo, Constants.Paths.Employees)
         };
 
         var entry = await _applicationDataContext.Employee.AddAsync(employee, cancellationToken);

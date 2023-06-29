@@ -18,7 +18,7 @@ public class DirectionMapper : ResponseMapper<DirectionResponse, Domain.Entities
                 FirstName = e.Employee.FirstName,
                 LastName = e.Employee.LastName,
                 Surname = e.Employee.Surname,
-                PreviewUrl = e.Employee.PreviewUrl,
+                PhotoUrl = e.Employee.PhotoUrl,
                 Phone = e.Employee.Phone,
                 Email = e.Employee.Email
             },
