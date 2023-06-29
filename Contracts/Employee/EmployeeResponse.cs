@@ -14,5 +14,5 @@ public record EmployeeResponse
     
     public string Email { get; set; } = null!;
 
-    public string FullName => $"{FirstName} {LastName} {Surname}";   
+    public string FullName => $"{LastName} {FirstName} {Surname}";   
 }
