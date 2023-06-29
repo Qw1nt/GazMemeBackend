@@ -12,6 +12,8 @@ public class DirectionMapper : ResponseMapper<DirectionResponse, Domain.Entities
         {
             Id = e.Id,
             Title = e.Title,
+            Subtitle = e.Subtitle,
+            ShortDescription = e.ShortDescription,
             Description = e.Description,
             Employee = new EmployeeResponse
             {
