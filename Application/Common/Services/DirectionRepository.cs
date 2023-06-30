@@ -42,6 +42,11 @@ public class DirectionRepository : IDirectionRepository
         
         if (employee is null)
             return null;
+
+        var imageUrls = new List<string>();
+        
+        foreach (var image in model.Images)
+            imageUrls.Add(await _fileSaveService.SaveAsync(httpContext, image, Constants.Paths.Directions));
         
         var direction = new Direction()
         {
@@ -51,10 +56,7 @@ public class DirectionRepository : IDirectionRepository
             Description = model.Description,
             Employee = employee,
             PreviewUrl = await _fileSaveService.SaveAsync(httpContext, model.Preview, Constants.Paths.Directions),
-            ImageUrls = model.Images.Select(async x => 
-                await _fileSaveService.SaveAsync(httpContext, x, Constants.Paths.Directions))
-                .Select(x => x.Result)
-                .ToList()
+            ImageUrls = imageUrls
         };
 
         var entry = await _applicationDataContext.Direction.AddAsync(direction, cancellationToken);

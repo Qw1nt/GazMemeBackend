@@ -53,6 +53,11 @@ public class EventRepository : IEventRepository
         
         if (direction is null)
             return null;
+
+        var imageUrls = new List<string>();
+
+        foreach (var image in model.Images)
+            imageUrls.Add(await _fileSaveService.SaveAsync(httpContext, image, Constants.Paths.Directions));
         
         var newEvent = new Event()
         {
@@ -62,10 +67,7 @@ public class EventRepository : IEventRepository
             DateTime = model.DateTime,
             Employees = employees,
             VideoUrl = await _fileSaveService.SaveAsync(httpContext, model.Video, Constants.Paths.Events),
-            ImageUrls = model.Images.Select(async x => 
-                    await _fileSaveService.SaveAsync(httpContext, x, Constants.Paths.Directions))
-                .Select(x => x.Result)
-                .ToList()
+            ImageUrls = imageUrls
         };
 
         var entry = await _applicationDataContext.Event.AddAsync(newEvent, cancellationToken);
