@@ -3,7 +3,7 @@ using Application.Messages.Event.Commands;
 
 namespace GazMeme.Endpoints.Event;
 
-[HttpDelete("event/{DeleteId}")]
+[HttpDelete("event/{EventId}")]
 public class DeleteEventEndpoint : Endpoint<DeleteEventCommand>
 {
     private readonly IEventRepository _eventRepository;
