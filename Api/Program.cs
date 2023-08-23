@@ -38,7 +38,7 @@ app.UseSwaggerGen(x => x.PostProcess = (document, request) =>
     document.Servers.Clear();
     document.Servers.Add(new OpenApiServer()
     {
-        Url = "https://clothing-store-ek.ru/"
+        Url = "https://gazprom-volunteering.ru/"
     });
 });
 
