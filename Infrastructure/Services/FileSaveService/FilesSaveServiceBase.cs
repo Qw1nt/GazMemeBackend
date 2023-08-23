@@ -4,7 +4,7 @@ namespace Infrastructure.Services.FileSaveService;
 
 public abstract class FilesSaveServiceBase
 {
-    protected const string BaseUrl = "https://clothing-store-ek.ru/";
+    protected const string BaseUrl = "https://gazprom-volunteering.ru/";
     
     public FilesSaveServiceBase(IWebHostEnvironment environment)
     {
