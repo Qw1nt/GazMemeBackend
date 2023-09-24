@@ -24,6 +24,10 @@ services.AddEndpointBinders();
 services.AddFastEndpoints();
 services.SwaggerDocument();
 
+builder.WebHost.ConfigureKestrel(o =>
+{
+    o.Limits.MaxRequestBodySize = 1073741824;
+});
 
 var app = builder.Build();
 
