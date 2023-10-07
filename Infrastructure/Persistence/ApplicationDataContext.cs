@@ -16,10 +16,10 @@ public sealed class ApplicationDataContext : DbContext, IApplicationDataContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        modelBuilder.Entity<Domain.Entities.Direction>()
-            .HasOne(x => x.Employee)
-            .WithOne(x => x.Direction)
-            .HasForeignKey<Employee>(x => x.DirectionId);
+        modelBuilder.Entity<Domain.Entities.Employee>()
+            .HasOne(x => x.Direction)
+            .WithOne(x => x.Employee)
+            .HasForeignKey<Direction>(x => x.EmployeeId);
         
         base.OnModelCreating(modelBuilder);
     }

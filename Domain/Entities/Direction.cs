@@ -10,6 +10,8 @@ public class Direction : EntityBase
 
     public string Description { get; set; }
 
+    public int EmployeeId { get; set; }
+    
     public Employee Employee { get; set; }
 
     public string PreviewUrl { get; set; } = null!;
