@@ -15,6 +15,12 @@ public sealed class ApplicationDataContext : DbContext, IApplicationDataContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        modelBuilder.Entity<Domain.Entities.Direction>()
+            .HasOne(x => x.Employee)
+            .WithOne(x => x.Direction)
+            .HasForeignKey<Employee>(x => x.DirectionId);
+        
         base.OnModelCreating(modelBuilder);
     }
     

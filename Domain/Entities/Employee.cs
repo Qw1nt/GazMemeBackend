@@ -6,6 +6,8 @@ public class Employee : EntityBase
 
     public string LastName { get; set; }
     
+    public int DirectionId { get; set; }
+    
     public Direction Direction { get; set; }
 
     public string Surname { get; set; } = null!;
