@@ -8,27 +8,43 @@ public class EventMapper : ResponseMapper<EventResponse, Domain.Entities.Event>
 {
     public override EventResponse FromEntity(Domain.Entities.Event e)
     {
-        return new EventResponse
+        var response = new EventResponse
         {
             Id = e.Id,
             Title = e.Title,
             Description = e.Description,
             DateTime = e.DateTime,
             VideoUrl = e.VideoUrl,
-            Employees = e.Employees.Select(x => new EmployeeResponse
-            {
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Surname = x.Surname,
-                PhotoUrl = x.PhotoUrl,
-                Phone = x.Phone,
-                Email = x.Email,
-                Direction = new DirectionResponse()
-                {
-                    Id = x.Direction.Id
-                }
-            }).ToList(),
             ImageUrls = e.ImageUrls
         };
+
+        var employees = new List<EmployeeResponse>();
+        
+        foreach (var yuy in e.Employees)
+        {
+            var employee = new EmployeeResponse()
+            {
+                FirstName = yuy.FirstName,
+                LastName = yuy.LastName,
+                Surname = yuy.Surname,
+                PhotoUrl = yuy.PhotoUrl,
+                Phone = yuy.Phone,
+                Email = yuy.Email
+            };
+
+            if (yuy.Direction is not null)
+            {
+                employee.Direction = new DirectionResponse()
+                {
+                    Id = yuy.Direction.Id
+                };
+            }
+            
+            employees.Add(employee);
+        }
+
+        response.Employees = employees;
+        
+        return response;
     }
 }

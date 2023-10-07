@@ -19,7 +19,8 @@ public sealed class ApplicationDataContext : DbContext, IApplicationDataContext
         modelBuilder.Entity<Domain.Entities.Employee>()
             .HasOne(x => x.Direction)
             .WithOne(x => x.Employee)
-            .HasForeignKey<Direction>(x => x.EmployeeId);
+            .HasForeignKey<Direction>(x => x.EmployeeId)
+            .IsRequired();
         
         base.OnModelCreating(modelBuilder);
     }
