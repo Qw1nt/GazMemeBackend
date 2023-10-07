@@ -1,11 +1,13 @@
 using Application.Common.Interfaces;
+using Contracts.Direction;
+using GazMeme.Endpoints.Direction.Mapper;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Direction;
 
 [HttpGet("direction/all")]
 [AllowAnonymous]
-public class GetAllDirectionEndpoint : EndpointWithoutRequest<List<Domain.Entities.Direction>>
+public class GetAllDirectionEndpoint : EndpointWithoutRequest<List<DirectionResponse>, DirectionMapper>
 {
     private readonly IDirectionRepository _directionRepository;
 
@@ -18,6 +20,6 @@ public class GetAllDirectionEndpoint : EndpointWithoutRequest<List<Domain.Entiti
     {
         var directions = await _directionRepository.GetAllAsync(ct);
 
-        await SendAsync(directions, cancellation: ct);
+        await SendAsync(directions.Select(x => Map.FromEntity(x)).ToList(), cancellation: ct);
     }
 }
