@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GazMeme.Endpoints.Posts;
 
-[HttpGet("posts/:Id")]
+[HttpGet("posts/{Id}")]
 [AllowAnonymous]
 public class GetPostEndpoint : Endpoint<GetByIdPostRequest, Post>
 {
