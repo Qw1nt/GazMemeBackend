@@ -1,3 +1,5 @@
+using Contracts.Direction;
+
 namespace Contracts.Employee;
 
 public record EmployeeResponse
@@ -13,6 +15,8 @@ public record EmployeeResponse
     public string Phone { get; set; } = null!;
     
     public string Email { get; set; } = null!;
+    
+    public DirectionResponse Direction { get; set; }  = null!;
 
     public string FullName => $"{LastName} {FirstName} {Surname}";   
 }

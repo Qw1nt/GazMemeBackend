@@ -1,3 +1,4 @@
+using Contracts.Direction;
 using Contracts.Employee;
 using Contracts.Event;
 
@@ -21,7 +22,11 @@ public class EventMapper : ResponseMapper<EventResponse, Domain.Entities.Event>
                 Surname = x.Surname,
                 PhotoUrl = x.PhotoUrl,
                 Phone = x.Phone,
-                Email = x.Email
+                Email = x.Email,
+                Direction = new DirectionResponse()
+                {
+                    Id = x.Direction.Id
+                }
             }).ToList(),
             ImageUrls = e.ImageUrls
         };

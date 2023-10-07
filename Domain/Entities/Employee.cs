@@ -5,6 +5,8 @@ public class Employee : EntityBase
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
+    
+    public Direction Direction { get; set; }
 
     public string Surname { get; set; } = null!;
 

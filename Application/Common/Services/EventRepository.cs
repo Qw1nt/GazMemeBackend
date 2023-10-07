@@ -30,6 +30,7 @@ public class EventRepository : IEventRepository
     {
         return await _applicationDataContext.Event
             .Include(x => x.Employees)
+            .ThenInclude(e => e.Direction)
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken: cancellationToken);
     }
