@@ -7,15 +7,15 @@ public class DirectionResponse
 {
     public int Id { get; set; }
 
-    public string Title { get; set; }
+    public string Title { get; set; } = null!;
     
-    public string Subtitle { get; set; }
+    public string Subtitle { get; set; }  = null!;
 
-    public string ShortDescription { get; set; }
+    public string ShortDescription { get; set; }  = null!;
 
-    public string Description { get; set; }
+    public string Description { get; set; }  = null!;
 
-    public EmployeeResponse Employee { get; set; }
+    public EmployeeResponse Employee { get; set; }  = null!;
 
     public string PreviewUrl { get; set; } = null!;
 

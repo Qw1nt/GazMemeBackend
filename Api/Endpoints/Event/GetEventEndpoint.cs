@@ -19,7 +19,7 @@ public class GetEventEndpoint : Endpoint<GetByIdEventRequest, EventResponse, Eve
 
     public override async Task HandleAsync(GetByIdEventRequest req , CancellationToken ct)
     {
-        var requestedEvent = await _eventRepository.GetAsync(req.Id, ct);
+         var requestedEvent = await _eventRepository.GetAsync(req.Id, ct);
 
         if (requestedEvent is null)
             await SendErrorsAsync(cancellation: ct);
