@@ -37,6 +37,7 @@ public class PostRepository : IPostRepository
         var post = new Post()
         {
             Title = model.Title,
+            ShortDescription = model.ShortDescription,
             Content = model.Content,
             ImageUrl = await _fileSaveService.SaveAsync(httpContext, model.Image, Constants.Paths.Posts)
         };
