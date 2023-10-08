@@ -25,6 +25,14 @@ public class EmployeeRepository : IEmployeeRepository
             .ToListAsync(cancellationToken: cancellationToken);
     }
     
+    public async Task<List<Employee>> GetAllOrganizersAsync(CancellationToken cancellationToken = default)
+    {
+        return await _applicationDataContext.Employee
+            .Where(x => x.Direction != null)
+            .AsNoTracking()
+            .ToListAsync(cancellationToken: cancellationToken);
+    }
+    
     public async Task<List<Employee>> GetByEventAsync(int eventId, CancellationToken cancellationToken = default)
     {
         return await _applicationDataContext.Employee
