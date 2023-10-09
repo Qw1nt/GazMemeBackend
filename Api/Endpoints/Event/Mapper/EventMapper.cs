@@ -22,8 +22,12 @@ public class EventMapper : ResponseMapper<EventResponse, Domain.Entities.Event>
         
         foreach (var yuy in e.Employees)
         {
+            if (employees.Any(x => x.Id == yuy.Id))
+                continue;
+            
             var employee = new EmployeeResponse()
             {
+                Id = yuy.Id,
                 FirstName = yuy.FirstName,
                 LastName = yuy.LastName,
                 Surname = yuy.Surname,

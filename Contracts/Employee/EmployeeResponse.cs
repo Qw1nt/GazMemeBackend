@@ -4,6 +4,8 @@ namespace Contracts.Employee;
 
 public record EmployeeResponse
 {
+    public int Id { get; set; }
+    
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
